@@ -21,7 +21,7 @@ body {
   font-weight: 400;
   overflow-x: hidden;
   position: relative;
-  background-color: #121212 !important;
+  background-color: #000000 !important;
   color: #fff !important;
   font-family: 'Courier New', Courier, monospace !important;
 }
@@ -81,7 +81,7 @@ nav.navbar {
 
 nav.navbar.scrolled {
   padding: 0;
-  background-color: #121212;
+  background-color: #000000;
 }
 
 nav-navbar a.navbar-brand {
@@ -178,7 +178,7 @@ span.navbar-text {
 }
 
 .navbar-text button:hover {
-  color: #121212;
+  color: #000000;
 }
 
 .navbar-text button:hover::before {

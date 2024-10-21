@@ -1,5 +1,11 @@
 import { useState, useEffect } from "react"
-import { Navbar, Container, NavbarBrand, NavbarToggle, NavbarCollapse, Nav, NavLink } from "react-bootstrap"
+import {
+  Navbar, Container, NavbarBrand, NavbarToggle, NavbarCollapse, Nav, NavLink,
+} from "react-bootstrap";
+import logo from '../assets/logo.png'
+import linkedin from '../assets/linkedin.svg'
+import github  from '../assets/github.svg'
+import whatsapp from '../assets/whatsapp.svg'
 
 export const NavBar = () => {
   const [activeLink, setActiveLink] = useState('home');
@@ -23,7 +29,7 @@ export const NavBar = () => {
     <Navbar expand="lg" className={ scrolled ? "scrolled" : "" }>
       <Container>
         <NavbarBrand>
-          <img ssrc={''} alt="Logo" />
+          <img src={logo} alt="Logo" height="100px" />
         </NavbarBrand>
         <NavbarToggle aria-controls="basic-navbar-nav">
           <span className="navbar-toggler-icon"></span>
@@ -54,9 +60,9 @@ export const NavBar = () => {
           </Nav>
           <span className="navbar-text">
             <div className="social-icon">
-              <a href="/"><img src={""} alt="" /></a>
-              <a href="/"><img src={""} alt="" /></a>
-              <a href="/"><img src={""} alt="" /></a>
+              <a href="https://www.linkedin.com/in/margarita-syddall/"><img src={linkedin} alt="Linkedin" /></a>
+              <a href="https://github.com/MargaritaSyd"><img src={github} alt="Github" /></a>
+              <a href="/"><img src={whatsapp} alt="Whatsapp" /></a>
             </div>
             <button className="vvd" onClick={() => console.log('button')}>
               <span>Let's connect!</span>
