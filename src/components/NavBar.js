@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import {
   Navbar, Container, NavbarBrand, NavbarToggle, NavbarCollapse, Nav, NavLink,
 } from "react-bootstrap";
@@ -8,11 +8,26 @@ import logo from '../assets/logo.png'
 
 export const NavBar = () => {
   const [activeLink, setActiveLink] = useState('home');
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => {
+      if (window.scrollX > 50) {
+        setScrolled(true);
+      } else {
+        setScrolled(false)
+      }
+    }
+
+    window.addEventListener("scroll", onScroll);
+
+    return () => window.removeEventListener("scroll", onScroll)
+  }, [])
 
   
   const onUpdateActiveLink = (value) => setActiveLink(value);
   return (
-    <Navbar expand="lg" >
+    <Navbar expand="lg" className={scrolled ? "scrolled" : ""} >
       <Container>
         <NavbarBrand>
           <img src={logo} alt="Logo" height="100px" />
@@ -43,7 +58,7 @@ export const NavBar = () => {
                 ))
               }
             </div>
-            <button className="vvd" onClick={() => console.log('button')}>
+            <button onClick={() => window.scrollTo({ left: 0, top: document.body.scrollHeight, behavior: "smooth" })}>
               <span>Let's connect!</span>
             </button>
           </span>

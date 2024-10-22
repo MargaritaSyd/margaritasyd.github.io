@@ -330,6 +330,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 .emailForm {
   display: flex;
   flex-direction: column;
+  margin-bottom: 20px;
 }
 .emailForm input {
   margin: 10px 0;

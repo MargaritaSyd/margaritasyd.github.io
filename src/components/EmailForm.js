@@ -42,6 +42,7 @@ import { Container } from "react-bootstrap";
   }
   return (
     <Container>
+      <h2>Send me an email and I'll get in touch with you</h2>
       <div class="alert alert-success" style={showAlert ? {} : {display: 'none'}} role="alert">
         The email was sent, thanks! 
       </div>
