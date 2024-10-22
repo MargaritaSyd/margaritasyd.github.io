@@ -5,9 +5,6 @@ import {
 import { navbarItems, socialLinks } from "../constants/navbarItems";
 import { capitalizeWord } from '../utils/globalUtils'
 import logo from '../assets/logo.png'
-import linkedin from '../assets/linkedin.svg'
-import github  from '../assets/github.svg'
-import whatsapp from '../assets/whatsapp.svg'
 
 export const NavBar = () => {
   const [activeLink, setActiveLink] = useState('home');
