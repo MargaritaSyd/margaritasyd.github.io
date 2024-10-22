@@ -1,62 +1,51 @@
 import { useState } from "react";
-import emailjs from '@emailjs/browser'
+import axios from "axios";
 import { Container } from "react-bootstrap";
 
  export const EmailForm = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
+  const [showAlert, setShowAlert] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const serviceId = "service_wpcxbrn";
     const templateId = "template_3frrdnp"
     const publicKey = 'H-9WirW9f8Z6TnjA7';
 
-    const templateParams = {
+    const template_params = {
       from_name: name,
       from_email: email,
       to_name: 'Margarita',
       message,
     }
 
-    emailjs.send(serviceId, templateId, templateId, templateParams, publicKey)
-      .then((response) => {
-        console.log('email sent success', response);
-        setName('');
-        setEmail('');
-        setMessage('');
-      })
-      .catch((error) => {
-        console.log(error);
-      })
+    const data = {
+      service_id: serviceId,
+      template_id: templateId,
+      user_id: publicKey,
+      template_params,
+    }
+    
+    try {
+      const res = await axios.post("https://api.emailjs.com/api/v1.0/email/send", data);
+      console.log(res.data);
+      setName('');
+      setEmail('');
+      setMessage('');
+      setShowAlert(true);
+    } catch (error) {
+      console.error(error)
+    }
   }
   return (
-    // <form onSubmit={handleSubmit} className="emailForm">
-    //   <iput
-    //     type="text"
-    //     placeholder="Your Name"
-    //     value={name}
-    //     onChange={(e) => setName(e.target.value)}
-    //     className="emailForm__input"
-    //   />
-    //   <iput
-    //     type="email"
-    //     placeholder="Your Email"
-    //     value={email}
-    //     onChange={(e) => setEmail(e.target.value)}
-    //   />
-    //   <textarea
-    //   cols="30"
-    //   rows="10"
-    //   value={message}
-    //   onChange={(e) => setMessage(e.target.value)}
-    //   />
-    //   <button type="submit">Send Email</button>
-    // </form>
     <Container>
-    <form className="emailForm">
+      <div class="alert alert-success" style={showAlert ? {} : {display: 'none'}} role="alert">
+        The email was sent, thanks! 
+      </div>
+    <form className="emailForm" onSubmit={handleSubmit}>
       <div class="mb-3">
         <label for="name" class="form-label">Your Name</label>
         <input
@@ -69,7 +58,13 @@ import { Container } from "react-bootstrap";
       </div>
       <div class="mb-3">
         <label for="email" class="form-label">Your Email</label>
-        <input type="email" class="form-control" id="email" />
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
       </div>
       <div class="mb-3" style={{display: 'flex', flexDirection: 'column'}}>
         <label class="form-label" for="message">Your message</label>
