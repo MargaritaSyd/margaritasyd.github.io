@@ -8,10 +8,6 @@ export const navbarItems = [
     href: '/',
   },
   {
-    title: 'projects',
-    href: '#',
-  },
-  {
     title: 'articles',
     href: "https://medium.com/flux-it-thoughts/micro-frontends-the-future-of-modern-web-development-1ea50d71dbc8",
   }
