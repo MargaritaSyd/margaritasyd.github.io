@@ -1,0 +1,33 @@
+{
+  "files": {
+    "main.css": "/static/css/main.49b463ca.css",
+    "main.js": "/static/js/main.272d07de.js",
+    "static/js/453.1407b060.chunk.js": "/static/js/453.1407b060.chunk.js",
+    "static/media/webpack.png": "/static/media/webpack.7ef3ebe39eae9798242d.png",
+    "static/media/sass.png": "/static/media/sass.5550b0914cc442debdc5.png",
+    "static/media/logo.png": "/static/media/logo.b68336abb61ed3f22a17.png",
+    "static/media/headerImg.png": "/static/media/headerImg.3f84a0e315584fb83d94.png",
+    "static/media/coder-house.png": "/static/media/coder-house.022f7a355d3abe20da3e.png",
+    "static/media/tailwind.png": "/static/media/tailwind.faac7d523c968d37c631.png",
+    "static/media/utn.png": "/static/media/utn.74e29cc4eeedbcdb7ad4.png",
+    "static/media/javascript.png": "/static/media/javascript.ded835d1a467f4059ac7.png",
+    "static/media/storybook.png": "/static/media/storybook.e7ddd6eaa5bc22bf0e07.png",
+    "static/media/redux.png": "/static/media/redux.73f3fb422b9099c64761.png",
+    "static/media/react.png": "/static/media/react.2fda4f18d16a7a99ae4f.png",
+    "static/media/udemy.png": "/static/media/udemy.ad4f3cca1dce7f33dccd.png",
+    "static/media/revicons.eot": "/static/media/revicons.a77de540a38981833f9e.eot",
+    "static/media/revicons.ttf": "/static/media/revicons.57fd05d4ae650374c8de.ttf",
+    "static/media/typescript.png": "/static/media/typescript.410438c14eaf3a250f6f.png",
+    "static/media/revicons.woff": "/static/media/revicons.e8746a624ed098489406.woff",
+    "static/media/github.svg": "/static/media/github.a2dcecaacdba94077f71818776dd805b.svg",
+    "static/media/linkedin.svg": "/static/media/linkedin.48c578785988bce75017d928a5dc8a14.svg",
+    "index.html": "/index.html",
+    "main.49b463ca.css.map": "/static/css/main.49b463ca.css.map",
+    "main.272d07de.js.map": "/static/js/main.272d07de.js.map",
+    "453.1407b060.chunk.js.map": "/static/js/453.1407b060.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.49b463ca.css",
+    "static/js/main.272d07de.js"
+  ]
+}
