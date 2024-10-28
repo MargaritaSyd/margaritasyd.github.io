@@ -23,7 +23,6 @@ Available url:
 
 ## Installation and Setup  
 
-1. **Clone the repository:**  
-  $git clone (https://github.com/MargaritaSyd/margaritasyd.github.io.git)
-  $npm install
-  $npm start
+* $git clone (https://github.com/MargaritaSyd/margaritasyd.github.io.git)  
+* $npm install
+* $npm start
