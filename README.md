@@ -8,8 +8,7 @@ Available url:
 ## Features  
 
 * **Responsive Design:** Adapts seamlessly to different screen sizes (desktops, tablets, and mobile phones).  
-// TODO: 
-//* **Project Showcase:** Displays a curated list of my projects with brief descriptions, links to live demos (where applicable), and source code repositories.  
+* **Project Showcase:** Displays a curated list of my projects with brief descriptions, links to live demos (where applicable), and source code repositories.  
 * **Skills Section:** Highlights my key technical skills.  
 * **About Me Section:** Provides a concise summary of my background, experience, and professional goals.  
 * **Contact Form:** Allows visitors to easily get in touch using a contact form.  
