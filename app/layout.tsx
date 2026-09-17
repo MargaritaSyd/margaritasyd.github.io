@@ -16,5 +16,11 @@ type RootLayoutProps = {
 };
 
 export default function RootLayout({ children }: RootLayoutProps) {
-  return children;
+  return (
+    <html lang="en" data-br-theme="dark" suppressHydrationWarning>
+      <body className="flex min-h-dvh flex-col bg-background font-sans text-foreground antialiased">
+        {children}
+      </body>
+    </html>
+  );
 }

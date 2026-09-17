@@ -1,9 +1,12 @@
 import type { Metadata } from 'next';
 import NextLink from 'next/link';
 import { notFound } from 'next/navigation';
+import { CandidateView } from '@/components/candidate-view';
+import { JsonLd } from '@/components/json-ld';
 import { Heading, Stack, Text } from '@/components/blurise';
+import { links } from '@/content/links';
 import { getMessages } from '@/messages';
-import { isLocale, pathFor, defaultLocale } from '@/lib/paths';
+import { absUrl, defaultLocale, isLocale, pathFor } from '@/lib/paths';
 
 const sectionParams = [
   { locale: 'es', section: 'candidata' },
@@ -67,17 +70,40 @@ export default async function SectionPage({ params }: PageProps) {
   if (!isLocale(locale)) notFound();
   if (!isCandidateSection(section) && !isFreelanceSection(section)) notFound();
 
+  if (isCandidateSection(section)) {
+    return (
+      <>
+        <JsonLd
+          data={{
+            '@context': 'https://schema.org',
+            '@type': 'Person',
+            name: 'Margarita Syddall',
+            url: absUrl(pathFor(locale, 'candidate')),
+            jobTitle: 'Frontend engineer',
+            worksFor: {
+              '@type': 'Organization',
+              name: 'Flux IT',
+              url: links.fluxIt,
+            },
+            sameAs: [links.linkedin, links.github],
+            knowsAbout: ['React', 'TypeScript', 'Design systems', 'Frontend'],
+          }}
+        />
+        <CandidateView locale={locale} />
+      </>
+    );
+  }
+
   const t = getMessages(locale);
-  const isCandidate = isCandidateSection(section);
 
   return (
     <section className="mx-auto max-w-[var(--br-container-lg)] px-5 py-16 sm:py-24">
       <Stack gap={5} className="max-w-xl">
         <Heading as="h1" size="2xl">
-          {isCandidate ? t.stub.candidateHeading : t.stub.freelanceHeading}
+          {t.stub.freelanceHeading}
         </Heading>
         <Text tone="muted" size="lg">
-          {isCandidate ? t.stub.candidateBody : t.stub.freelanceBody}
+          {t.stub.freelanceBody}
         </Text>
         <NextLink href={pathFor(locale, 'home')} className="br-link w-fit">
           {t.stub.backHome}
