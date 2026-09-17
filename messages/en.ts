@@ -4,7 +4,7 @@ export const en = {
   meta: {
     homeTitle: 'Margarita Syddall — Frontend engineer',
     homeDescription:
-      'Frontend engineer. I design UI systems with cinematic motion and use them to ship products. Open to roles and freelance work.',
+      "As a frontend developer, I'm passionate about bringing interfaces to life — not only how they look, but how they feel. Clear, fast, accessible digital products.",
     candidateTitle: 'Hire Margarita Syddall — Frontend engineer',
     candidateDescription:
       'Frontend engineer focused on React, TypeScript, and design systems. Product experience and UI libraries.',
@@ -21,14 +21,15 @@ export const en = {
   },
   home: {
     badge: 'Frontend · design systems · motion',
-    heading: "Hi, I'm Margarita.",
-    lede: 'I design UI systems with cinematic motion — and use them to build products.',
+    heading: 'From design to interaction, I turn ideas into web experiences',
+    lede: "As a frontend developer, I'm passionate about bringing interfaces to life — not only how they look, but how natural they feel. I combine creativity and technology to build digital products that are clear, fast, and accessible.",
     ctaCandidate: "You're hiring",
     ctaFreelance: 'You need a frontend',
     proofBadge: 'Library',
     proofTitle: 'blurise',
     proofBody:
       'A React kit with tokens, motion primitives, and accessible components. This site is built with it.',
+    proofLink: 'blurise on npm',
     currentRole: 'Frontend at Santander Consumer',
   },
   stub: {

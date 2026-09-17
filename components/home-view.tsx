@@ -10,6 +10,7 @@ import {
   Text,
 } from '@/components/blurise';
 import { pageContainerSize } from '@/lib/layout';
+import { links } from '@/content/links';
 import { getMessages } from '@/messages';
 import { pathFor, type Locale } from '@/lib/paths';
 
@@ -30,10 +31,13 @@ export function HomeView({ locale }: HomeViewProps) {
           <BlurRise>
             <Stack gap={5}>
               <Badge variant="accent">{t.home.badge}</Badge>
-              <Heading as="h1">{t.home.heading}</Heading>
+              <Heading as="h1" size="2xl">
+                {t.home.heading}
+              </Heading>
               <Text tone="muted" size="lg">
                 {t.home.lede}
               </Text>
+              <Text size="sm">{t.home.currentRole}</Text>
               <Stack direction="row" gap={3} wrap>
                 <NextLink
                   href={pathFor(locale, 'candidate')}
@@ -52,16 +56,25 @@ export function HomeView({ locale }: HomeViewProps) {
           </BlurRise>
 
           <Card rise grain inView>
-            <Badge>{t.home.proofBadge}</Badge>
-            <Heading as="h2" size="lg" className="mt-4">
-              {t.home.proofTitle}
-            </Heading>
-            <Text tone="muted" size="sm" className="mt-2">
-              {t.home.proofBody}
-            </Text>
-            <Text size="sm" className="mt-4">
-              {t.home.currentRole}
-            </Text>
+            <Stack gap={5}>
+              <Badge>{t.home.proofBadge}</Badge>
+              <div>
+                <Heading as="h2" size="lg">
+                  {t.home.proofTitle}
+                </Heading>
+                <Text tone="muted" size="sm" className="mt-2">
+                  {t.home.proofBody}
+                </Text>
+              </div>
+              <a
+                href={links.bluriseNpm}
+                className="br-link w-fit"
+                target="_blank"
+                rel="noreferrer"
+              >
+                {t.home.proofLink}
+              </a>
+            </Stack>
           </Card>
         </Stack>
       </Stagger>

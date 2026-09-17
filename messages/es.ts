@@ -2,7 +2,7 @@ export const es = {
   meta: {
     homeTitle: 'Margarita Syddall — Frontend engineer',
     homeDescription:
-      'Frontend engineer. Diseño sistemas de UI con motion cinematográfico y los uso para construir productos. Disponible para roles y para proyectos freelance.',
+      'Como frontend developer, me apasiona dar vida a interfaces que no solo se ven bien, sino que también se sienten naturales. Productos digitales claros, rápidos y accesibles.',
     candidateTitle: 'Perfil para equipos — Margarita Syddall',
     candidateDescription:
       'Frontend engineer con foco en React, TypeScript y design systems. Experiencia en producto y librerías de UI.',
@@ -19,14 +19,15 @@ export const es = {
   },
   home: {
     badge: 'Frontend · design systems · motion',
-    heading: 'Hola, soy Margarita.',
-    lede: 'Diseño sistemas de UI con motion cinematográfico — y los uso para construir productos.',
+    heading: 'Del diseño a la interacción, convierto ideas en experiencias web',
+    lede: 'Como frontend developer, me apasiona dar vida a interfaces que no solo se ven bien, sino que también se sienten naturales. Trabajo combinando creatividad y tecnología para construir productos digitales claros, rápidos y accesibles.',
     ctaCandidate: 'Buscás contratarme',
     ctaFreelance: 'Necesitás una frontend',
     proofBadge: 'Librería',
     proofTitle: 'blurise',
     proofBody:
       'Kit de React con tokens, primitivas de motion y componentes accesibles. Este sitio está construido con ella.',
+    proofLink: 'blurise en npm',
     currentRole: 'Frontend en Santander Consumer',
   },
   stub: {
