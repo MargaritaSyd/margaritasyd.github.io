@@ -4,12 +4,14 @@ import {
   AccordionItem,
   AccordionTrigger,
   Badge,
+  BlurFade,
   BlurRise,
   Card,
   Container,
   Heading,
   Separator,
   Stack,
+  Stagger,
   Text,
 } from '@/components/blurise';
 import { ContactForm } from '@/components/contact-form';
@@ -63,108 +65,120 @@ export function CandidateView({ locale }: CandidateViewProps) {
           </Stack>
         </BlurRise>
 
-        <Separator />
+        <BlurFade inView>
+          <Separator />
+        </BlurFade>
 
         <Stack gap={4}>
-          <Heading as="h2" size="xl">
-            {t.experience.title}
-          </Heading>
-          {t.experience.items.map((job) => (
-            <Card key={`${job.company}-${job.period}`}>
-              <Stack gap={3}>
-                <div>
-                  <Text as="strong">{job.role}</Text>
-                  <Text tone="muted" size="sm">
-                    {job.companyHref ? (
-                      <a
-                        href={job.companyHref}
-                        className="br-link"
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        {job.company}
-                      </a>
-                    ) : (
-                      <span className="text-accent">{job.company}</span>
-                    )}
-                    {' · '}
-                    {job.period}
-                  </Text>
-                </div>
-                <ul className="list-disc space-y-2 pl-5 text-[length:var(--br-font-size-sm)] text-muted">
-                  {job.bullets.map((bullet) => (
-                    <li key={bullet}>{bullet}</li>
-                  ))}
-                </ul>
-              </Stack>
-            </Card>
-          ))}
+          <BlurRise inView>
+            <Heading as="h2" size="xl">
+              {t.experience.title}
+            </Heading>
+          </BlurRise>
+          <Stagger gap={70} className="flex flex-col gap-4">
+            {t.experience.items.map((job) => (
+              <Card key={`${job.company}-${job.period}`} rise inView>
+                <Stack gap={3}>
+                  <div>
+                    <Text as="strong">{job.role}</Text>
+                    <Text tone="muted" size="sm">
+                      {job.companyHref ? (
+                        <a
+                          href={job.companyHref}
+                          className="br-link"
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          {job.company}
+                        </a>
+                      ) : (
+                        <span className="text-accent">{job.company}</span>
+                      )}
+                      {' · '}
+                      {job.period}
+                    </Text>
+                  </div>
+                  <ul className="list-disc space-y-2 pl-5 text-[length:var(--br-font-size-sm)] text-muted">
+                    {job.bullets.map((bullet) => (
+                      <li key={bullet}>{bullet}</li>
+                    ))}
+                  </ul>
+                </Stack>
+              </Card>
+            ))}
+          </Stagger>
         </Stack>
 
         <Stack gap={4}>
-          <Heading as="h2" size="xl">
-            {t.work.title}
-          </Heading>
-          {t.work.items.map((item) => (
-            <Card key={item.name} rise grain inView>
-              <Stack gap={5}>
-                <Badge>{item.badge}</Badge>
-                <div>
-                  <Heading as="h3" size="lg">
-                    {item.name}
-                  </Heading>
-                  <Text tone="muted" size="sm" className="mt-2">
-                    {item.body}
-                  </Text>
-                </div>
-                {item.caseStudy ? (
-                  <Stack gap={4}>
-                    <div>
-                      <Text as="strong" size="sm">
-                        {item.caseStudy.problemLabel}
-                      </Text>
-                      <Text tone="muted" size="sm">
-                        {item.caseStudy.problem}
-                      </Text>
-                    </div>
-                    <div>
-                      <Text as="strong" size="sm">
-                        {item.caseStudy.approachLabel}
-                      </Text>
-                      <Text tone="muted" size="sm">
-                        {item.caseStudy.approach}
-                      </Text>
-                    </div>
-                    <div>
-                      <Text as="strong" size="sm">
-                        {item.caseStudy.outcomeLabel}
-                      </Text>
-                      <Text tone="muted" size="sm">
-                        {item.caseStudy.outcome}
-                      </Text>
-                    </div>
-                  </Stack>
-                ) : null}
-                <a
-                  href={item.href}
-                  className="br-link w-fit"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  {item.linkLabel}
-                </a>
-              </Stack>
-            </Card>
-          ))}
+          <BlurRise inView>
+            <Heading as="h2" size="xl">
+              {t.work.title}
+            </Heading>
+          </BlurRise>
+          <Stagger gap={70} className="flex flex-col gap-4">
+            {t.work.items.map((item) => (
+              <Card key={item.name} rise grain inView>
+                <Stack gap={5}>
+                  <Badge>{item.badge}</Badge>
+                  <div>
+                    <Heading as="h3" size="lg">
+                      {item.name}
+                    </Heading>
+                    <Text tone="muted" size="sm" className="mt-2">
+                      {item.body}
+                    </Text>
+                  </div>
+                  {item.caseStudy ? (
+                    <Stack gap={4}>
+                      <div>
+                        <Text as="strong" size="sm">
+                          {item.caseStudy.problemLabel}
+                        </Text>
+                        <Text tone="muted" size="sm">
+                          {item.caseStudy.problem}
+                        </Text>
+                      </div>
+                      <div>
+                        <Text as="strong" size="sm">
+                          {item.caseStudy.approachLabel}
+                        </Text>
+                        <Text tone="muted" size="sm">
+                          {item.caseStudy.approach}
+                        </Text>
+                      </div>
+                      <div>
+                        <Text as="strong" size="sm">
+                          {item.caseStudy.outcomeLabel}
+                        </Text>
+                        <Text tone="muted" size="sm">
+                          {item.caseStudy.outcome}
+                        </Text>
+                      </div>
+                    </Stack>
+                  ) : null}
+                  <a
+                    href={item.href}
+                    className="br-link w-fit"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {item.linkLabel}
+                  </a>
+                </Stack>
+              </Card>
+            ))}
+          </Stagger>
         </Stack>
 
         <Stack gap={4}>
-          <Heading as="h2" size="xl">
-            {t.skills.title}
-          </Heading>
-          <div className="grid gap-4 sm:grid-cols-2">
+          <BlurRise inView>
+            <Heading as="h2" size="xl">
+              {t.skills.title}
+            </Heading>
+          </BlurRise>
+          <Stagger gap={70} className="grid gap-4 sm:grid-cols-2">
             {t.skills.groups.map((group) => (
-              <Card key={group.name}>
+              <Card key={group.name} rise inView>
                 <Text as="strong">{group.name}</Text>
                 <ul className="mt-3 space-y-1 text-[length:var(--br-font-size-sm)] text-muted">
                   {group.items.map((item) => (
@@ -173,39 +187,43 @@ export function CandidateView({ locale }: CandidateViewProps) {
                 </ul>
               </Card>
             ))}
-          </div>
+          </Stagger>
         </Stack>
 
-        <Stack gap={4}>
-          <Heading as="h2" size="xl">
-            {t.education.title}
-          </Heading>
-          <Accordion type="single" defaultValue="edu-0">
-            {t.education.items.map((item, index) => (
-              <AccordionItem key={item.school} value={`edu-${index}`}>
-                <AccordionTrigger>
-                  <span className="flex min-w-0 flex-1 items-baseline justify-between gap-3">
-                    <span>{item.school}</span>
-                    <span className="text-[length:var(--br-font-size-xs)] font-normal text-muted">
-                      {item.period}
+        <BlurRise inView>
+          <Stack gap={4}>
+            <Heading as="h2" size="xl">
+              {t.education.title}
+            </Heading>
+            <Accordion type="single" defaultValue="edu-0">
+              {t.education.items.map((item, index) => (
+                <AccordionItem key={item.school} value={`edu-${index}`}>
+                  <AccordionTrigger>
+                    <span className="flex min-w-0 flex-1 items-baseline justify-between gap-3">
+                      <span>{item.school}</span>
+                      <span className="text-[length:var(--br-font-size-xs)] font-normal text-muted">
+                        {item.period}
+                      </span>
                     </span>
-                  </span>
-                </AccordionTrigger>
-                <AccordionContent>
-                  <Text tone="muted" size="sm">
-                    {item.program}
-                  </Text>
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </Stack>
+                  </AccordionTrigger>
+                  <AccordionContent>
+                    <Text tone="muted" size="sm">
+                      {item.program}
+                    </Text>
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </Stack>
+        </BlurRise>
 
         <Stack gap={4}>
-          <Heading as="h2" size="xl">
-            {t.writing.title}
-          </Heading>
-          <Card>
+          <BlurRise inView>
+            <Heading as="h2" size="xl">
+              {t.writing.title}
+            </Heading>
+          </BlurRise>
+          <Card rise inView>
             <a href={t.writing.href} className="br-link" target="_blank" rel="noreferrer">
               {t.writing.articleTitle}
             </a>
@@ -215,13 +233,15 @@ export function CandidateView({ locale }: CandidateViewProps) {
           </Card>
         </Stack>
 
-        <Stack gap={4}>
-          <Heading as="h2" size="xl">
-            {t.contact.title}
-          </Heading>
-          <Text tone="muted">{t.contact.lede}</Text>
-          <ContactForm copy={t.contact} intent="hiring" idPrefix="recruiter" />
-        </Stack>
+        <BlurRise inView>
+          <Stack gap={4}>
+            <Heading as="h2" size="xl">
+              {t.contact.title}
+            </Heading>
+            <Text tone="muted">{t.contact.lede}</Text>
+            <ContactForm copy={t.contact} intent="hiring" idPrefix="recruiter" />
+          </Stack>
+        </BlurRise>
       </Stack>
     </Container>
   );
