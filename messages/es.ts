@@ -27,7 +27,7 @@ export const es = {
     proofTitle: 'blurise',
     proofBody:
       'Kit de React con tokens, primitivas de motion y componentes accesibles. Este sitio está construido con ella.',
-    currentRole: 'Frontend en Flux IT',
+    currentRole: 'Frontend en Santander Consumer',
   },
   stub: {
     candidateHeading: 'Perfil para equipos',

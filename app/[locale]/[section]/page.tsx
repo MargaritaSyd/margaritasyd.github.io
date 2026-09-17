@@ -1,9 +1,8 @@
 import type { Metadata } from 'next';
-import NextLink from 'next/link';
 import { notFound } from 'next/navigation';
 import { CandidateView } from '@/components/candidate-view';
+import { FreelanceView } from '@/components/freelance-view';
 import { JsonLd } from '@/components/json-ld';
-import { Heading, Stack, Text } from '@/components/blurise';
 import { links } from '@/content/links';
 import { getMessages } from '@/messages';
 import { absUrl, defaultLocale, isLocale, pathFor } from '@/lib/paths';
@@ -79,14 +78,19 @@ export default async function SectionPage({ params }: PageProps) {
             '@type': 'Person',
             name: 'Margarita Syddall',
             url: absUrl(pathFor(locale, 'candidate')),
-            jobTitle: 'Frontend engineer',
             worksFor: {
               '@type': 'Organization',
-              name: 'Flux IT',
-              url: links.fluxIt,
+              name: 'Santander Consumer',
             },
+            jobTitle: 'Frontend developer',
+            address: {
+              '@type': 'PostalAddress',
+              addressLocality: 'Buenos Aires',
+              addressCountry: 'AR',
+            },
+            knowsLanguage: ['es', 'en'],
             sameAs: [links.linkedin, links.github],
-            knowsAbout: ['React', 'TypeScript', 'Design systems', 'Frontend'],
+            knowsAbout: ['React', 'TypeScript', 'Next.js', 'Design systems', 'Micro frontends'],
           }}
         />
         <CandidateView locale={locale} />
@@ -94,21 +98,35 @@ export default async function SectionPage({ params }: PageProps) {
     );
   }
 
-  const t = getMessages(locale);
+  const serviceName =
+    locale === 'es'
+      ? 'Margarita Syddall — Frontend freelance'
+      : 'Margarita Syddall — Freelance frontend';
 
   return (
-    <section className="mx-auto max-w-[var(--br-container-lg)] px-5 py-16 sm:py-24">
-      <Stack gap={5} className="max-w-xl">
-        <Heading as="h1" size="2xl">
-          {t.stub.freelanceHeading}
-        </Heading>
-        <Text tone="muted" size="lg">
-          {t.stub.freelanceBody}
-        </Text>
-        <NextLink href={pathFor(locale, 'home')} className="br-link w-fit">
-          {t.stub.backHome}
-        </NextLink>
-      </Stack>
-    </section>
+    <>
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'ProfessionalService',
+          name: serviceName,
+          url: absUrl(pathFor(locale, 'freelance')),
+          areaServed: 'Worldwide',
+          availableLanguage: ['en', 'es'],
+          serviceType: [
+            'Frontend development',
+            'Design systems',
+            'Product UI',
+          ],
+          provider: {
+            '@type': 'Person',
+            name: 'Margarita Syddall',
+            url: absUrl(pathFor(locale, 'home')),
+            sameAs: [links.linkedin, links.github],
+          },
+        }}
+      />
+      <FreelanceView locale={locale} />
+    </>
   );
 }

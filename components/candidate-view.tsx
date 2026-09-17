@@ -12,7 +12,7 @@ import {
   Stack,
   Text,
 } from '@/components/blurise';
-import { RecruiterForm } from '@/components/recruiter-form';
+import { ContactForm } from '@/components/contact-form';
 import { getCandidateCopy } from '@/content/candidate';
 import { links } from '@/content/links';
 import type { Locale } from '@/lib/paths';
@@ -36,11 +36,15 @@ export function CandidateView({ locale }: CandidateViewProps) {
             <Text tone="muted" size="lg">
               {t.lede}
             </Text>
+            <Text size="sm">{t.location}</Text>
             <Text size="sm">{t.openTo}</Text>
             <Stack direction="row" gap={3} wrap>
+              <a href={links.cv} className="br-button br-button--primary br-button--md">
+                {t.cv}
+              </a>
               <a
                 href={links.linkedin}
-                className="br-button br-button--primary br-button--md"
+                className="br-button br-button--ghost br-button--md"
                 target="_blank"
                 rel="noreferrer"
               >
@@ -64,30 +68,36 @@ export function CandidateView({ locale }: CandidateViewProps) {
           <Heading as="h2" size="xl">
             {t.experience.title}
           </Heading>
-          <Card>
-            <Stack gap={3}>
-              <div>
-                <Text as="strong">{t.experience.role}</Text>
-                <Text tone="muted" size="sm">
-                  <a
-                    href={t.experience.companyHref}
-                    className="br-link"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    {t.experience.company}
-                  </a>
-                  {' · '}
-                  {t.experience.period}
-                </Text>
-              </div>
-              <ul className="list-disc space-y-2 pl-5 text-[length:var(--br-font-size-sm)] text-muted">
-                {t.experience.bullets.map((bullet) => (
-                  <li key={bullet}>{bullet}</li>
-                ))}
-              </ul>
-            </Stack>
-          </Card>
+          {t.experience.items.map((job) => (
+            <Card key={`${job.company}-${job.period}`}>
+              <Stack gap={3}>
+                <div>
+                  <Text as="strong">{job.role}</Text>
+                  <Text tone="muted" size="sm">
+                    {job.companyHref ? (
+                      <a
+                        href={job.companyHref}
+                        className="br-link"
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        {job.company}
+                      </a>
+                    ) : (
+                      job.company
+                    )}
+                    {' · '}
+                    {job.period}
+                  </Text>
+                </div>
+                <ul className="list-disc space-y-2 pl-5 text-[length:var(--br-font-size-sm)] text-muted">
+                  {job.bullets.map((bullet) => (
+                    <li key={bullet}>{bullet}</li>
+                  ))}
+                </ul>
+              </Stack>
+            </Card>
+          ))}
         </Stack>
 
         <Stack gap={4} className="max-w-2xl">
@@ -200,7 +210,7 @@ export function CandidateView({ locale }: CandidateViewProps) {
           <Text tone="muted" className="max-w-xl">
             {t.contact.lede}
           </Text>
-          <RecruiterForm copy={t.contact} />
+          <ContactForm copy={t.contact} intent="hiring" idPrefix="recruiter" />
         </Stack>
       </Stack>
     </Container>

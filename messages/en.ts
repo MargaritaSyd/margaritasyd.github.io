@@ -29,7 +29,7 @@ export const en = {
     proofTitle: 'blurise',
     proofBody:
       'A React kit with tokens, motion primitives, and accessible components. This site is built with it.',
-    currentRole: 'Frontend at Flux IT',
+    currentRole: 'Frontend at Santander Consumer',
   },
   stub: {
     candidateHeading: 'For hiring teams',
