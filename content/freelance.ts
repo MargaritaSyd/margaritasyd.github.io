@@ -22,11 +22,13 @@ export type FreelanceCopy = {
   };
   proof: {
     title: string;
-    badge: string;
-    name: string;
-    body: string;
-    npm: string;
-    npmHref: string;
+    items: {
+      badge: string;
+      name: string;
+      body: string;
+      href: string;
+      linkLabel: string;
+    }[];
   };
   faq: {
     title: string;
@@ -104,11 +106,22 @@ const en: FreelanceCopy = {
   },
   proof: {
     title: 'How I actually work',
-    badge: 'Library',
-    name: 'blurise',
-    body: 'This site is built with the kit I publish: tokens, cinematic motion in CSS, accessible controls. If you need a system with that kind of care, that is the work.',
-    npm: 'blurise on npm',
-    npmHref: links.bluriseNpm,
+    items: [
+      {
+        badge: 'Client',
+        name: 'OllyGarden',
+        body: 'Production website for OllyGarden, a telemetry-quality product for observability teams.',
+        href: links.ollygarden,
+        linkLabel: 'ollygarden.com',
+      },
+      {
+        badge: 'Library',
+        name: 'blurise',
+        body: 'This site is built with the kit I publish: tokens, cinematic motion in CSS, accessible controls. If you need a system with that kind of care, that is the work.',
+        href: links.bluriseNpm,
+        linkLabel: 'blurise on npm',
+      },
+    ],
   },
   faq: {
     title: 'FAQ',
@@ -203,11 +216,22 @@ const es: FreelanceCopy = {
   },
   proof: {
     title: 'Así trabajo de verdad',
-    badge: 'Librería',
-    name: 'blurise',
-    body: 'Este sitio está hecho con el kit que publico: tokens, motion cinematográfico en CSS, controles accesibles. Si necesitás un sistema con ese nivel de cuidado, ese es el trabajo.',
-    npm: 'blurise en npm',
-    npmHref: links.bluriseNpm,
+    items: [
+      {
+        badge: 'Cliente',
+        name: 'OllyGarden',
+        body: 'Sitio en producción de OllyGarden, un producto de calidad de telemetría para equipos de observability.',
+        href: links.ollygarden,
+        linkLabel: 'ollygarden.com',
+      },
+      {
+        badge: 'Librería',
+        name: 'blurise',
+        body: 'Este sitio está hecho con el kit que publico: tokens, motion cinematográfico en CSS, controles accesibles. Si necesitás un sistema con ese nivel de cuidado, ese es el trabajo.',
+        href: links.bluriseNpm,
+        linkLabel: 'blurise en npm',
+      },
+    ],
   },
   faq: {
     title: 'FAQ',

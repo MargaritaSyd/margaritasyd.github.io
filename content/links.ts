@@ -7,4 +7,5 @@ export const links = {
     'https://medium.com/flux-it-thoughts/micro-frontends-the-future-of-modern-web-development-1ea50d71dbc8',
   cv: '/cv.pdf',
   whatsapp: 'https://wa.me/5491134223248',
+  ollygarden: 'https://ollygarden.com/',
 } as const;

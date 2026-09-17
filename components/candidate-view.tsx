@@ -104,46 +104,53 @@ export function CandidateView({ locale }: CandidateViewProps) {
           <Heading as="h2" size="xl">
             {t.work.title}
           </Heading>
-          <Card rise grain inView>
-            <Badge>{t.work.badge}</Badge>
-            <Heading as="h3" size="lg" className="mt-4">
-              {t.work.name}
-            </Heading>
-            <Stack gap={4} className="mt-4">
-              <div>
-                <Text as="strong" size="sm">
-                  {t.work.problemLabel}
-                </Text>
-                <Text tone="muted" size="sm">
-                  {t.work.problem}
-                </Text>
-              </div>
-              <div>
-                <Text as="strong" size="sm">
-                  {t.work.approachLabel}
-                </Text>
-                <Text tone="muted" size="sm">
-                  {t.work.approach}
-                </Text>
-              </div>
-              <div>
-                <Text as="strong" size="sm">
-                  {t.work.outcomeLabel}
-                </Text>
-                <Text tone="muted" size="sm">
-                  {t.work.outcome}
-                </Text>
-              </div>
+          {t.work.items.map((item) => (
+            <Card key={item.name} rise grain inView>
+              <Badge>{item.badge}</Badge>
+              <Heading as="h3" size="lg" className="mt-4">
+                {item.name}
+              </Heading>
+              <Text tone="muted" size="sm" className="mt-2">
+                {item.body}
+              </Text>
+              {item.caseStudy ? (
+                <Stack gap={4} className="mt-4">
+                  <div>
+                    <Text as="strong" size="sm">
+                      {item.caseStudy.problemLabel}
+                    </Text>
+                    <Text tone="muted" size="sm">
+                      {item.caseStudy.problem}
+                    </Text>
+                  </div>
+                  <div>
+                    <Text as="strong" size="sm">
+                      {item.caseStudy.approachLabel}
+                    </Text>
+                    <Text tone="muted" size="sm">
+                      {item.caseStudy.approach}
+                    </Text>
+                  </div>
+                  <div>
+                    <Text as="strong" size="sm">
+                      {item.caseStudy.outcomeLabel}
+                    </Text>
+                    <Text tone="muted" size="sm">
+                      {item.caseStudy.outcome}
+                    </Text>
+                  </div>
+                </Stack>
+              ) : null}
               <a
-                href={t.work.npmHref}
-                className="br-link w-fit"
+                href={item.href}
+                className="br-link mt-4 inline-block w-fit"
                 target="_blank"
                 rel="noreferrer"
               >
-                {t.work.npm}
+                {item.linkLabel}
               </a>
-            </Stack>
-          </Card>
+            </Card>
+          ))}
         </Stack>
 
         <Stack gap={4}>

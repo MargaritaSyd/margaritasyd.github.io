@@ -107,23 +107,25 @@ export function FreelanceView({ locale }: FreelanceViewProps) {
           <Heading as="h2" size="xl">
             {t.proof.title}
           </Heading>
-          <Card rise grain inView>
-            <Badge>{t.proof.badge}</Badge>
-            <Heading as="h3" size="lg" className="mt-4">
-              {t.proof.name}
-            </Heading>
-            <Text tone="muted" size="sm" className="mt-2">
-              {t.proof.body}
-            </Text>
-            <a
-              href={t.proof.npmHref}
-              className="br-link mt-4 inline-block w-fit"
-              target="_blank"
-              rel="noreferrer"
-            >
-              {t.proof.npm}
-            </a>
-          </Card>
+          {t.proof.items.map((item) => (
+            <Card key={item.name} rise grain inView>
+              <Badge>{item.badge}</Badge>
+              <Heading as="h3" size="lg" className="mt-4">
+                {item.name}
+              </Heading>
+              <Text tone="muted" size="sm" className="mt-2">
+                {item.body}
+              </Text>
+              <a
+                href={item.href}
+                className="br-link mt-4 inline-block w-fit"
+                target="_blank"
+                rel="noreferrer"
+              >
+                {item.linkLabel}
+              </a>
+            </Card>
+          ))}
         </Stack>
 
         <Stack gap={4} className="max-w-2xl">

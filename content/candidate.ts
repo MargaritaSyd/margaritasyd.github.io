@@ -24,16 +24,21 @@ export type CandidateCopy = {
   };
   work: {
     title: string;
-    badge: string;
-    name: string;
-    problemLabel: string;
-    problem: string;
-    approachLabel: string;
-    approach: string;
-    outcomeLabel: string;
-    outcome: string;
-    npm: string;
-    npmHref: string;
+    items: {
+      badge: string;
+      name: string;
+      body: string;
+      href: string;
+      linkLabel: string;
+      caseStudy?: {
+        problemLabel: string;
+        problem: string;
+        approachLabel: string;
+        approach: string;
+        outcomeLabel: string;
+        outcome: string;
+      };
+    }[];
   };
   skills: {
     title: string;
@@ -124,19 +129,33 @@ const en: CandidateCopy = {
   },
   work: {
     title: 'Selected work',
-    badge: 'Library',
-    name: 'blurise',
-    problemLabel: 'Problem',
-    problem:
-      'Most UI kits ignore motion, or they bolt on a JS animation runtime. I wanted a small React surface with a cinematic language that still respects reduced motion.',
-    approachLabel: 'Approach',
-    approach:
-      'Design tokens (`--br-*`), CSS-first primitives (blur-rise, stagger, grain), and a core kit: actions, forms, overlays. Accessibility from day one — focus rings, dialogs, keyboard menus.',
-    outcomeLabel: 'Outcome',
-    outcome:
-      'Published on npm. This portfolio is the production consumer: Next.js App Router + blurise + Tailwind mapped to the same tokens.',
-    npm: 'blurise on npm',
-    npmHref: links.bluriseNpm,
+    items: [
+      {
+        badge: 'Client',
+        name: 'OllyGarden',
+        body: 'Production website for OllyGarden, a telemetry-quality product for observability teams. Public marketing site — live at ollygarden.com.',
+        href: links.ollygarden,
+        linkLabel: 'ollygarden.com',
+      },
+      {
+        badge: 'Library',
+        name: 'blurise',
+        body: 'A React kit with tokens, cinematic motion in CSS, and accessible components. This portfolio is built with it.',
+        href: links.bluriseNpm,
+        linkLabel: 'blurise on npm',
+        caseStudy: {
+          problemLabel: 'Problem',
+          problem:
+            'Most UI kits ignore motion, or they bolt on a JS animation runtime. I wanted a small React surface with a cinematic language that still respects reduced motion.',
+          approachLabel: 'Approach',
+          approach:
+            'Design tokens (`--br-*`), CSS-first primitives (blur-rise, stagger, grain), and a core kit: actions, forms, overlays. Accessibility from day one — focus rings, dialogs, keyboard menus.',
+          outcomeLabel: 'Outcome',
+          outcome:
+            'Published on npm. This site is the production consumer: Next.js App Router + blurise + Tailwind mapped to the same tokens.',
+        },
+      },
+    ],
   },
   skills: {
     title: 'Skills',
@@ -265,19 +284,33 @@ const es: CandidateCopy = {
   },
   work: {
     title: 'Trabajo seleccionado',
-    badge: 'Librería',
-    name: 'blurise',
-    problemLabel: 'Problema',
-    problem:
-      'La mayoría de los kits de UI ignoran el motion, o lo resuelven con un runtime de animación pesado. Quería una superficie chica en React, con lenguaje cinematográfico, que respetara reduced motion.',
-    approachLabel: 'Enfoque',
-    approach:
-      'Tokens (`--br-*`), primitivas en CSS (blur-rise, stagger, grain) y un kit: acciones, forms, overlays. Accesibilidad desde el día uno — focus, dialogs, menús con teclado.',
-    outcomeLabel: 'Resultado',
-    outcome:
-      'Publicada en npm. Este portfolio es el consumidor en producción: Next.js App Router + blurise + Tailwind mapeado a los mismos tokens.',
-    npm: 'blurise en npm',
-    npmHref: links.bluriseNpm,
+    items: [
+      {
+        badge: 'Cliente',
+        name: 'OllyGarden',
+        body: 'Sitio en producción de OllyGarden, un producto de calidad de telemetría para equipos de observability. Marketing site público — ollygarden.com.',
+        href: links.ollygarden,
+        linkLabel: 'ollygarden.com',
+      },
+      {
+        badge: 'Librería',
+        name: 'blurise',
+        body: 'Kit de React con tokens, motion cinematográfico en CSS y componentes accesibles. Este portfolio está construido con ella.',
+        href: links.bluriseNpm,
+        linkLabel: 'blurise en npm',
+        caseStudy: {
+          problemLabel: 'Problema',
+          problem:
+            'La mayoría de los kits de UI ignoran el motion, o lo resuelven con un runtime de animación pesado. Quería una superficie chica en React, con lenguaje cinematográfico, que respetara reduced motion.',
+          approachLabel: 'Enfoque',
+          approach:
+            'Tokens (`--br-*`), primitivas en CSS (blur-rise, stagger, grain) y un kit: acciones, forms, overlays. Accesibilidad desde el día uno — focus, dialogs, menús con teclado.',
+          outcomeLabel: 'Resultado',
+          outcome:
+            'Publicada en npm. Este sitio es el consumidor en producción: Next.js App Router + blurise + Tailwind mapeado a los mismos tokens.',
+        },
+      },
+    ],
   },
   skills: {
     title: 'Skills',
