@@ -17,6 +17,10 @@ export {
   Stack,
   Text,
   Textarea,
+  BlurFade,
   BlurRise,
+  Float,
+  Grain,
+  ScaleRise,
   Stagger,
 } from 'blurise';
