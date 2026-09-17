@@ -1,0 +1,36 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-background: var(--br-color-bg);
+  --color-surface: var(--br-color-surface);
+  --color-elevated: var(--br-color-elevated);
+  --color-border: var(--br-color-border);
+  --color-foreground: var(--br-color-text);
+  --color-muted: var(--br-color-muted);
+  --color-accent: var(--br-color-accent);
+  --color-accent-hover: var(--br-color-accent-hover);
+  --color-focus: var(--br-color-focus);
+  --color-danger: var(--br-color-danger);
+  --color-success: var(--br-color-success);
+
+  --font-sans: var(--br-font-sans);
+
+  --radius-sm: var(--br-radius-sm);
+  --radius-md: var(--br-radius-md);
+  --radius-lg: var(--br-radius-lg);
+  --radius-full: var(--br-radius-full);
+
+  --shadow-br: var(--br-shadow);
+}
+
+html {
+  background: var(--br-color-bg);
+  color: var(--br-color-text);
+}
+
+body {
+  min-height: 100dvh;
+  background: var(--br-color-bg);
+  color: var(--br-color-text);
+  font-family: var(--br-font-sans);
+}

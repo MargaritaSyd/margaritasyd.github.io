@@ -1,28 +1,20 @@
-# My Portfolio App  
+# Portfolio
 
-This is my portfolio application built with React and Bootstrap.  It showcases my projects, skills and contact information in a clean and responsive design. 
+Sitio personal de Margarita Syddall. Reescritura en curso: Next.js + blurise + Tailwind.
 
-Available url:
-## https://margaritasyd.github.io/
+## Desarrollo
 
-## Features  
+```bash
+npm install
+npm run dev
+```
 
-* **Responsive Design:** Adapts seamlessly to different screen sizes (desktops, tablets, and mobile phones).  
-* **Project Showcase:** Displays a curated list of my projects with brief descriptions, links to live demos, and source code repositories.  
-* **Skills Section:** Highlights my key technical skills.  
-* **About Me Section:** Provides a concise summary of my background, experience, and professional goals.  
-* **Contact Form:** Allows visitors to easily get in touch using a contact form.  
-* **Clean and Modern UI:** Uses Bootstrap for a consistent and aesthetically pleasing design.   
+Abre [http://localhost:3000](http://localhost:3000) — redirige a `/en/`.
 
-## Technologies Used  
+## Build estático (GitHub Pages)
 
-* **React:** For building the user interface and managing application state.  
-* **Bootstrap:** For styling and responsive design.   
-* **Version Control:**  Git - GitHub
+```bash
+npm run build
+```
 
-
-## Installation and Setup  
-
-* $git clone https://github.com/MargaritaSyd/margaritasyd.github.io.git  
-* $npm install
-* $npm start
+La salida queda en `out/`. Todavía no reemplaza `docs/` (el sitio publicado).
