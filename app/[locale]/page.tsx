@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { HomeView } from '@/components/home-view';
 import { getMessages } from '@/messages';
 import { isLocale, pathFor, defaultLocale } from '@/lib/paths';
+import { ogImage, twitterCard } from '@/lib/seo';
 
 type HomePageProps = {
   params: Promise<{ locale: string }>;
@@ -29,7 +30,9 @@ export async function generateMetadata({ params }: HomePageProps): Promise<Metad
       description: t.meta.homeDescription,
       locale: locale === 'es' ? 'es_AR' : 'en_US',
       type: 'website',
+      images: [ogImage],
     },
+    twitter: twitterCard,
   };
 }
 

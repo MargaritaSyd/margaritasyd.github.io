@@ -82,6 +82,7 @@ const en: CandidateCopy = {
       {
         role: 'Frontend developer',
         company: 'Santander Consumer (via RHT)',
+        companyHref: links.rht,
         period: '2026 — present',
         bullets: [
           'Loan simulator: dummy frontend that consumes backend JSON and renders simulation flows dynamically.',
@@ -92,6 +93,7 @@ const en: CandidateCopy = {
       {
         role: 'Software developer',
         company: 'Santander Technology (via RHT)',
+        companyHref: links.rht,
         period: 'May 2025 — Feb 2026',
         bullets: [
           'Internal banking tools and digital solutions with cross-functional teams.',
@@ -115,14 +117,6 @@ const en: CandidateCopy = {
         period: 'Feb 2022 — Jul 2022',
         bullets: [
           'Backend data work and frontend maintenance for a digital magazine serving Argentina’s equestrian community.',
-        ],
-      },
-      {
-        role: 'Freelance full stack developer',
-        company: 'Independent',
-        period: 'Apr 2020 — Feb 2022',
-        bullets: [
-          'E-commerce for organizations in Buenos Aires — React on the frontend, Node.js and MySQL on the backend.',
         ],
       },
     ],
@@ -237,6 +231,7 @@ const es: CandidateCopy = {
       {
         role: 'Frontend developer',
         company: 'Santander Consumer (vía RHT)',
+        companyHref: links.rht,
         period: '2026 — actualidad',
         bullets: [
           'Simulador de préstamos: frontend que consume JSON del backend y renderiza los flujos de simulación en forma dinámica.',
@@ -247,6 +242,7 @@ const es: CandidateCopy = {
       {
         role: 'Software developer',
         company: 'Santander Technology (vía RHT)',
+        companyHref: links.rht,
         period: 'May 2025 — Feb 2026',
         bullets: [
           'Herramientas internas y soluciones digitales de banca, con equipos transversales.',
@@ -270,14 +266,6 @@ const es: CandidateCopy = {
         period: 'Feb 2022 — Jul 2022',
         bullets: [
           'Backend de datos y mantenimiento frontend de una revista digital para la comunidad hípica argentina.',
-        ],
-      },
-      {
-        role: 'Freelance full stack',
-        company: 'Independiente',
-        period: 'Abr 2020 — Feb 2022',
-        bullets: [
-          'E-commerce para organizaciones en Buenos Aires: React en el frontend, Node.js y MySQL en el backend.',
         ],
       },
     ],

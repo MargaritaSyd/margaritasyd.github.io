@@ -88,7 +88,7 @@ const en: FreelanceCopy = {
     ],
   },
   process: {
-    title: 'How we work',
+    title: 'How I work',
     steps: [
       {
         name: '1. Discovery',

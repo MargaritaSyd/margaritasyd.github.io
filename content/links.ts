@@ -8,4 +8,5 @@ export const links = {
   cv: '/cv.pdf',
   whatsapp: 'https://wa.me/5491134223248',
   ollygarden: 'https://ollygarden.com/',
+  rht: 'https://rh-t.com/es/',
 } as const;

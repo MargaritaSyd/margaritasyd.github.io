@@ -15,6 +15,7 @@ import {
 import { ContactForm } from '@/components/contact-form';
 import { getFreelanceCopy } from '@/content/freelance';
 import { links } from '@/content/links';
+import { pageContainerSize } from '@/lib/layout';
 import type { Locale } from '@/lib/paths';
 
 type FreelanceViewProps = {
@@ -25,10 +26,10 @@ export function FreelanceView({ locale }: FreelanceViewProps) {
   const t = getFreelanceCopy(locale);
 
   return (
-    <Container size="lg" className="py-16 sm:py-24">
+    <Container size={pageContainerSize} className="py-16 sm:py-24">
       <Stack gap={10}>
         <BlurRise>
-          <Stack gap={5} className="max-w-2xl">
+          <Stack gap={5}>
             <Badge variant="accent">{t.badge}</Badge>
             <Heading as="h1" size="2xl">
               {t.heading}
@@ -45,7 +46,7 @@ export function FreelanceView({ locale }: FreelanceViewProps) {
           <Heading as="h2" size="xl">
             {t.services.title}
           </Heading>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-4 md:grid-cols-3">
             {t.services.items.map((item) => (
               <Card key={item.name} rise grain inView>
                 <Heading as="h3" size="lg">
@@ -87,7 +88,7 @@ export function FreelanceView({ locale }: FreelanceViewProps) {
           </div>
         </Stack>
 
-        <Stack gap={4} className="max-w-2xl">
+        <Stack gap={4}>
           <Heading as="h2" size="xl">
             {t.process.title}
           </Heading>
@@ -103,32 +104,36 @@ export function FreelanceView({ locale }: FreelanceViewProps) {
           </div>
         </Stack>
 
-        <Stack gap={4} className="max-w-2xl">
+        <Stack gap={4}>
           <Heading as="h2" size="xl">
             {t.proof.title}
           </Heading>
           {t.proof.items.map((item) => (
             <Card key={item.name} rise grain inView>
-              <Badge>{item.badge}</Badge>
-              <Heading as="h3" size="lg" className="mt-4">
-                {item.name}
-              </Heading>
-              <Text tone="muted" size="sm" className="mt-2">
-                {item.body}
-              </Text>
-              <a
-                href={item.href}
-                className="br-link mt-4 inline-block w-fit"
-                target="_blank"
-                rel="noreferrer"
-              >
-                {item.linkLabel}
-              </a>
+              <Stack gap={5}>
+                <Badge>{item.badge}</Badge>
+                <div>
+                  <Heading as="h3" size="lg">
+                    {item.name}
+                  </Heading>
+                  <Text tone="muted" size="sm" className="mt-2">
+                    {item.body}
+                  </Text>
+                </div>
+                <a
+                  href={item.href}
+                  className="br-link w-fit"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {item.linkLabel}
+                </a>
+              </Stack>
             </Card>
           ))}
         </Stack>
 
-        <Stack gap={4} className="max-w-2xl">
+        <Stack gap={4}>
           <Heading as="h2" size="xl">
             {t.faq.title}
           </Heading>
@@ -150,9 +155,7 @@ export function FreelanceView({ locale }: FreelanceViewProps) {
           <Heading as="h2" size="xl">
             {t.contact.title}
           </Heading>
-          <Text tone="muted" className="max-w-xl">
-            {t.contact.lede}
-          </Text>
+          <Text tone="muted">{t.contact.lede}</Text>
           <a
             href={links.whatsapp}
             className="br-button br-button--ghost br-button--md w-fit"

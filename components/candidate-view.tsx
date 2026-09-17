@@ -15,6 +15,7 @@ import {
 import { ContactForm } from '@/components/contact-form';
 import { getCandidateCopy } from '@/content/candidate';
 import { links } from '@/content/links';
+import { pageContainerSize } from '@/lib/layout';
 import type { Locale } from '@/lib/paths';
 
 type CandidateViewProps = {
@@ -25,10 +26,10 @@ export function CandidateView({ locale }: CandidateViewProps) {
   const t = getCandidateCopy(locale);
 
   return (
-    <Container size="lg" className="py-16 sm:py-24">
+    <Container size={pageContainerSize} className="py-16 sm:py-24">
       <Stack gap={10}>
         <BlurRise>
-          <Stack gap={5} className="max-w-2xl">
+          <Stack gap={5}>
             <Badge variant="accent">{t.badge}</Badge>
             <Heading as="h1" size="2xl">
               {t.heading}
@@ -64,7 +65,7 @@ export function CandidateView({ locale }: CandidateViewProps) {
 
         <Separator />
 
-        <Stack gap={4} className="max-w-2xl">
+        <Stack gap={4}>
           <Heading as="h2" size="xl">
             {t.experience.title}
           </Heading>
@@ -84,7 +85,7 @@ export function CandidateView({ locale }: CandidateViewProps) {
                         {job.company}
                       </a>
                     ) : (
-                      job.company
+                      <span className="text-accent">{job.company}</span>
                     )}
                     {' · '}
                     {job.period}
@@ -100,55 +101,59 @@ export function CandidateView({ locale }: CandidateViewProps) {
           ))}
         </Stack>
 
-        <Stack gap={4} className="max-w-2xl">
+        <Stack gap={4}>
           <Heading as="h2" size="xl">
             {t.work.title}
           </Heading>
           {t.work.items.map((item) => (
             <Card key={item.name} rise grain inView>
-              <Badge>{item.badge}</Badge>
-              <Heading as="h3" size="lg" className="mt-4">
-                {item.name}
-              </Heading>
-              <Text tone="muted" size="sm" className="mt-2">
-                {item.body}
-              </Text>
-              {item.caseStudy ? (
-                <Stack gap={4} className="mt-4">
-                  <div>
-                    <Text as="strong" size="sm">
-                      {item.caseStudy.problemLabel}
-                    </Text>
-                    <Text tone="muted" size="sm">
-                      {item.caseStudy.problem}
-                    </Text>
-                  </div>
-                  <div>
-                    <Text as="strong" size="sm">
-                      {item.caseStudy.approachLabel}
-                    </Text>
-                    <Text tone="muted" size="sm">
-                      {item.caseStudy.approach}
-                    </Text>
-                  </div>
-                  <div>
-                    <Text as="strong" size="sm">
-                      {item.caseStudy.outcomeLabel}
-                    </Text>
-                    <Text tone="muted" size="sm">
-                      {item.caseStudy.outcome}
-                    </Text>
-                  </div>
-                </Stack>
-              ) : null}
-              <a
-                href={item.href}
-                className="br-link mt-4 inline-block w-fit"
-                target="_blank"
-                rel="noreferrer"
-              >
-                {item.linkLabel}
-              </a>
+              <Stack gap={5}>
+                <Badge>{item.badge}</Badge>
+                <div>
+                  <Heading as="h3" size="lg">
+                    {item.name}
+                  </Heading>
+                  <Text tone="muted" size="sm" className="mt-2">
+                    {item.body}
+                  </Text>
+                </div>
+                {item.caseStudy ? (
+                  <Stack gap={4}>
+                    <div>
+                      <Text as="strong" size="sm">
+                        {item.caseStudy.problemLabel}
+                      </Text>
+                      <Text tone="muted" size="sm">
+                        {item.caseStudy.problem}
+                      </Text>
+                    </div>
+                    <div>
+                      <Text as="strong" size="sm">
+                        {item.caseStudy.approachLabel}
+                      </Text>
+                      <Text tone="muted" size="sm">
+                        {item.caseStudy.approach}
+                      </Text>
+                    </div>
+                    <div>
+                      <Text as="strong" size="sm">
+                        {item.caseStudy.outcomeLabel}
+                      </Text>
+                      <Text tone="muted" size="sm">
+                        {item.caseStudy.outcome}
+                      </Text>
+                    </div>
+                  </Stack>
+                ) : null}
+                <a
+                  href={item.href}
+                  className="br-link w-fit"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {item.linkLabel}
+                </a>
+              </Stack>
             </Card>
           ))}
         </Stack>
@@ -157,7 +162,7 @@ export function CandidateView({ locale }: CandidateViewProps) {
           <Heading as="h2" size="xl">
             {t.skills.title}
           </Heading>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-4 sm:grid-cols-2">
             {t.skills.groups.map((group) => (
               <Card key={group.name}>
                 <Text as="strong">{group.name}</Text>
@@ -171,7 +176,7 @@ export function CandidateView({ locale }: CandidateViewProps) {
           </div>
         </Stack>
 
-        <Stack gap={4} className="max-w-2xl">
+        <Stack gap={4}>
           <Heading as="h2" size="xl">
             {t.education.title}
           </Heading>
@@ -196,7 +201,7 @@ export function CandidateView({ locale }: CandidateViewProps) {
           </Accordion>
         </Stack>
 
-        <Stack gap={4} className="max-w-2xl">
+        <Stack gap={4}>
           <Heading as="h2" size="xl">
             {t.writing.title}
           </Heading>
@@ -214,9 +219,7 @@ export function CandidateView({ locale }: CandidateViewProps) {
           <Heading as="h2" size="xl">
             {t.contact.title}
           </Heading>
-          <Text tone="muted" className="max-w-xl">
-            {t.contact.lede}
-          </Text>
+          <Text tone="muted">{t.contact.lede}</Text>
           <ContactForm copy={t.contact} intent="hiring" idPrefix="recruiter" />
         </Stack>
       </Stack>

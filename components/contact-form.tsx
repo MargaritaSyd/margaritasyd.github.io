@@ -68,7 +68,7 @@ export function ContactForm({ copy, intent, idPrefix }: ContactFormProps) {
   }
 
   return (
-    <form onSubmit={onSubmit} className="max-w-xl">
+    <form onSubmit={onSubmit} className="w-full">
       <Stack gap={4}>
         <Stack gap={2}>
           <Label htmlFor={`${idPrefix}-name`}>{copy.name}</Label>

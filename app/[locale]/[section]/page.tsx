@@ -6,6 +6,7 @@ import { JsonLd } from '@/components/json-ld';
 import { links } from '@/content/links';
 import { getMessages } from '@/messages';
 import { absUrl, defaultLocale, isLocale, pathFor } from '@/lib/paths';
+import { ogImage, twitterCard } from '@/lib/seo';
 
 const sectionParams = [
   { locale: 'es', section: 'candidata' },
@@ -60,7 +61,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       locale: locale === 'es' ? 'es_AR' : 'en_US',
       type: 'website',
       url: path,
+      images: [ogImage],
     },
+    twitter: twitterCard,
   };
 }
 

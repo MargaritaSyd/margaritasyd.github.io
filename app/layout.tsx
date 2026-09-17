@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 import { siteUrl } from '@/lib/paths';
+import { ogImage, twitterCard } from '@/lib/seo';
 import './globals.css';
 import 'blurise/styles.css';
 
@@ -9,6 +10,12 @@ export const metadata: Metadata = {
   title: 'Margarita Syddall — Frontend engineer',
   description:
     'Frontend engineer. UI systems with cinematic motion. Open to roles and freelance work.',
+  openGraph: {
+    type: 'website',
+    siteName: 'Margarita Syddall',
+    images: [ogImage],
+  },
+  twitter: twitterCard,
 };
 
 type RootLayoutProps = {

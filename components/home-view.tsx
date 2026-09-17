@@ -9,6 +9,7 @@ import {
   Stagger,
   Text,
 } from '@/components/blurise';
+import { pageContainerSize } from '@/lib/layout';
 import { getMessages } from '@/messages';
 import { pathFor, type Locale } from '@/lib/paths';
 
@@ -20,11 +21,14 @@ export function HomeView({ locale }: HomeViewProps) {
   const t = getMessages(locale);
 
   return (
-    <Container size="lg" className="py-16 sm:py-24">
+    <Container
+      size={pageContainerSize}
+      className="flex min-h-[calc(100dvh-9rem)] flex-col justify-center py-16 sm:py-24"
+    >
       <Stagger gap={80}>
         <Stack gap={8}>
           <BlurRise>
-            <Stack gap={5} className="max-w-xl">
+            <Stack gap={5}>
               <Badge variant="accent">{t.home.badge}</Badge>
               <Heading as="h1">{t.home.heading}</Heading>
               <Text tone="muted" size="lg">
@@ -47,7 +51,7 @@ export function HomeView({ locale }: HomeViewProps) {
             </Stack>
           </BlurRise>
 
-          <Card rise grain inView className="max-w-xl">
+          <Card rise grain inView>
             <Badge>{t.home.proofBadge}</Badge>
             <Heading as="h2" size="lg" className="mt-4">
               {t.home.proofTitle}

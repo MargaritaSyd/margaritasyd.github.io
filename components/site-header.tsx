@@ -1,5 +1,6 @@
 import NextLink from 'next/link';
 import { LanguageSwitch } from '@/components/language-switch';
+import { pageMaxWidthClass } from '@/lib/layout';
 import { getMessages } from '@/messages';
 import { pathFor, type Locale } from '@/lib/paths';
 
@@ -12,7 +13,9 @@ export function SiteHeader({ locale }: SiteHeaderProps) {
 
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-background/85 backdrop-blur-md">
-      <div className="mx-auto flex max-w-[var(--br-container-lg)] items-center justify-between gap-4 px-5 py-4">
+      <div
+        className={`mx-auto flex w-full ${pageMaxWidthClass} items-center justify-between gap-4 px-5 py-4`}
+      >
         <NextLink
           href={pathFor(locale, 'home')}
           className="text-sm font-medium tracking-wide text-foreground no-underline"

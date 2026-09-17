@@ -1,4 +1,5 @@
 import NextLink from 'next/link';
+import { pageMaxWidthClass } from '@/lib/layout';
 import { getMessages } from '@/messages';
 import { type Locale } from '@/lib/paths';
 
@@ -11,7 +12,9 @@ export function SiteFooter({ locale }: SiteFooterProps) {
 
   return (
     <footer className="border-t border-border">
-      <div className="mx-auto flex max-w-[var(--br-container-lg)] items-center justify-between gap-4 px-5 py-6">
+      <div
+        className={`mx-auto flex w-full ${pageMaxWidthClass} items-center justify-between gap-4 px-5 py-6`}
+      >
         <p className="text-sm text-muted">© {new Date().getFullYear()} Margarita Syddall</p>
         <NextLink
           href="https://www.npmjs.com/package/blurise"
