@@ -1,6 +1,12 @@
 const WEB3FORMS_URL = 'https://api.web3forms.com/submit';
 
-type ContactIntent = 'hiring' | 'project';
+export type ContactIntent = 'role' | 'project' | 'other';
+
+const intentPrefix: Record<ContactIntent, string> = {
+  role: '[Role]',
+  project: '[Project]',
+  other: '[Hello]',
+};
 
 export async function sendContactEmail(input: {
   name: string;
@@ -13,7 +19,7 @@ export async function sendContactEmail(input: {
     throw new Error('Missing NEXT_PUBLIC_WEB3FORMS_KEY');
   }
 
-  const prefix = input.intent === 'hiring' ? '[Hiring]' : '[Project]';
+  const prefix = intentPrefix[input.intent];
 
   const response = await fetch(WEB3FORMS_URL, {
     method: 'POST',

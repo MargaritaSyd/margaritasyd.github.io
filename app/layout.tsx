@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: 'Margarita Syddall — Frontend engineer',
   description:
-    'Frontend engineer. UI systems with cinematic motion. Open to roles and freelance work.',
+    'Frontend engineer. React, design systems, motion. Open to freelance projects and product roles.',
   openGraph: {
     type: 'website',
     siteName: 'Margarita Syddall',

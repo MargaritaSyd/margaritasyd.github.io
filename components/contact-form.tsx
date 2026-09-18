@@ -2,31 +2,35 @@
 
 import { useState, type FormEvent } from 'react';
 import { Button, Input, Label, Stack, Text, Textarea } from '@/components/blurise';
-import { sendContactEmail } from '@/lib/contact';
+import { sendContactEmail, type ContactIntent } from '@/lib/contact';
 
 export type ContactFormCopy = {
   name: string;
   email: string;
+  intent: string;
+  intentRole: string;
+  intentProject: string;
+  intentOther: string;
   message: string;
   submit: string;
   sending: string;
   success: string;
   error: string;
-  goal?: string;
-  timeline?: string;
-  budget?: string;
 };
 
 type ContactFormProps = {
   copy: ContactFormCopy;
-  intent: 'hiring' | 'project';
   idPrefix: string;
 };
 
-export function ContactForm({ copy, intent, idPrefix }: ContactFormProps) {
+function parseIntent(value: string): ContactIntent {
+  if (value === 'role' || value === 'project') return value;
+  return 'other';
+}
+
+export function ContactForm({ copy, idPrefix }: ContactFormProps) {
   const [pending, setPending] = useState(false);
   const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
-  const brief = Boolean(copy.goal);
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -35,30 +39,15 @@ export function ContactForm({ copy, intent, idPrefix }: ContactFormProps) {
     const name = String(data.get('name') ?? '').trim();
     const email = String(data.get('email') ?? '').trim();
     const message = String(data.get('message') ?? '').trim();
-    const goal = String(data.get('goal') ?? '').trim();
-    const timeline = String(data.get('timeline') ?? '').trim();
-    const budget = String(data.get('budget') ?? '').trim();
+    const intent = parseIntent(String(data.get('intent') ?? ''));
 
     if (!name || !email || !message) return;
-    if (brief && !goal) return;
     if (data.get('botcheck')) return;
-
-    const parts = [
-      goal ? `Goal: ${goal}` : '',
-      timeline ? `Timeline: ${timeline}` : '',
-      budget ? `Budget: ${budget}` : '',
-      message,
-    ].filter(Boolean);
 
     setPending(true);
     setStatus('idle');
     try {
-      await sendContactEmail({
-        name,
-        email,
-        message: parts.join('\n'),
-        intent,
-      });
+      await sendContactEmail({ name, email, message, intent });
       form.reset();
       setStatus('success');
     } catch {
@@ -88,32 +77,23 @@ export function ContactForm({ copy, intent, idPrefix }: ContactFormProps) {
             required
           />
         </Stack>
-        {copy.goal ? (
-          <Stack gap={2}>
-            <Label htmlFor={`${idPrefix}-goal`}>{copy.goal}</Label>
-            <Textarea id={`${idPrefix}-goal`} name="goal" rows={3} required />
-          </Stack>
-        ) : null}
-        {copy.timeline ? (
-          <Stack gap={2}>
-            <Label htmlFor={`${idPrefix}-timeline`}>{copy.timeline}</Label>
-            <Input id={`${idPrefix}-timeline`} name="timeline" />
-          </Stack>
-        ) : null}
-        {copy.budget ? (
-          <Stack gap={2}>
-            <Label htmlFor={`${idPrefix}-budget`}>{copy.budget}</Label>
-            <Input id={`${idPrefix}-budget`} name="budget" />
-          </Stack>
-        ) : null}
+        <Stack gap={2}>
+          <Label htmlFor={`${idPrefix}-intent`}>{copy.intent}</Label>
+          <select
+            id={`${idPrefix}-intent`}
+            name="intent"
+            defaultValue=""
+            className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm text-foreground"
+          >
+            <option value="" />
+            <option value="role">{copy.intentRole}</option>
+            <option value="project">{copy.intentProject}</option>
+            <option value="other">{copy.intentOther}</option>
+          </select>
+        </Stack>
         <Stack gap={2}>
           <Label htmlFor={`${idPrefix}-message`}>{copy.message}</Label>
-          <Textarea
-            id={`${idPrefix}-message`}
-            name="message"
-            rows={brief ? 4 : 6}
-            required
-          />
+          <Textarea id={`${idPrefix}-message`} name="message" rows={6} required />
         </Stack>
         {status === 'success' ? (
           <Text size="sm" role="status">

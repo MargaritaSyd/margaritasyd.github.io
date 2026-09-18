@@ -8,54 +8,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     {
-      url: absUrl(pathFor('es', 'home')),
+      url: absUrl(pathFor('es')),
       lastModified,
-      alternates: { languages: { es: absUrl(pathFor('es', 'home')), en: absUrl(pathFor('en', 'home')) } },
+      alternates: { languages: { es: absUrl(pathFor('es')), en: absUrl(pathFor('en')) } },
     },
     {
-      url: absUrl(pathFor('en', 'home')),
+      url: absUrl(pathFor('en')),
       lastModified,
-      alternates: { languages: { es: absUrl(pathFor('es', 'home')), en: absUrl(pathFor('en', 'home')) } },
-    },
-    {
-      url: absUrl(pathFor('es', 'candidate')),
-      lastModified,
-      alternates: {
-        languages: {
-          es: absUrl(pathFor('es', 'candidate')),
-          en: absUrl(pathFor('en', 'candidate')),
-        },
-      },
-    },
-    {
-      url: absUrl(pathFor('en', 'candidate')),
-      lastModified,
-      alternates: {
-        languages: {
-          es: absUrl(pathFor('es', 'candidate')),
-          en: absUrl(pathFor('en', 'candidate')),
-        },
-      },
-    },
-    {
-      url: absUrl(pathFor('es', 'freelance')),
-      lastModified,
-      alternates: {
-        languages: {
-          es: absUrl(pathFor('es', 'freelance')),
-          en: absUrl(pathFor('en', 'freelance')),
-        },
-      },
-    },
-    {
-      url: absUrl(pathFor('en', 'freelance')),
-      lastModified,
-      alternates: {
-        languages: {
-          es: absUrl(pathFor('es', 'freelance')),
-          en: absUrl(pathFor('en', 'freelance')),
-        },
-      },
+      alternates: { languages: { es: absUrl(pathFor('es')), en: absUrl(pathFor('en')) } },
     },
   ];
 }

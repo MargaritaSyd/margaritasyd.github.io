@@ -1,4 +1,3 @@
-import NextLink from 'next/link';
 import { LanguageSwitch } from '@/components/language-switch';
 import { pageMaxWidthClass } from '@/lib/layout';
 import { getMessages } from '@/messages';
@@ -16,25 +15,31 @@ export function SiteHeader({ locale }: SiteHeaderProps) {
       <div
         className={`mx-auto flex w-full ${pageMaxWidthClass} items-center justify-between gap-4 px-5 py-4`}
       >
-        <NextLink
-          href={pathFor(locale, 'home')}
+        <a
+          href={`${pathFor(locale)}#top`}
           className="text-sm font-medium tracking-wide text-foreground no-underline"
         >
           Margarita Syddall
-        </NextLink>
+        </a>
         <nav className="flex flex-wrap items-center justify-end gap-3 sm:gap-5" aria-label="Primary">
-          <NextLink
-            href={pathFor(locale, 'candidate')}
+          <a
+            href={pathFor(locale, 'work')}
             className="text-sm text-muted no-underline hover:text-foreground"
           >
-            {t.nav.candidate}
-          </NextLink>
-          <NextLink
-            href={pathFor(locale, 'freelance')}
+            {t.nav.work}
+          </a>
+          <a
+            href={pathFor(locale, 'experience')}
             className="text-sm text-muted no-underline hover:text-foreground"
           >
-            {t.nav.freelance}
-          </NextLink>
+            {t.nav.experience}
+          </a>
+          <a
+            href={pathFor(locale, 'contact')}
+            className="text-sm text-muted no-underline hover:text-foreground"
+          >
+            {t.nav.contact}
+          </a>
           <LanguageSwitch locale={locale} />
         </nav>
       </div>

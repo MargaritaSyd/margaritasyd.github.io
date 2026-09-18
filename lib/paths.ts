@@ -5,30 +5,24 @@ export const defaultLocale: Locale = 'en';
 
 export const siteUrl = 'https://margaritasyd.github.io';
 
-export type Section = 'home' | 'candidate' | 'freelance';
+export const siteHashes = ['work', 'experience', 'approach', 'contact'] as const;
+export type SiteHash = (typeof siteHashes)[number];
 
 export function isLocale(value: string): value is Locale {
   return locales.includes(value as Locale);
 }
 
-export function sectionFromPath(pathname: string): Section {
-  if (pathname.includes('candidata') || pathname.includes('candidate')) {
-    return 'candidate';
-  }
-  if (pathname.includes('freelance')) {
-    return 'freelance';
-  }
-  return 'home';
+export function pathFor(locale: Locale, hash?: SiteHash): string {
+  return hash ? `/${locale}/#${hash}` : `/${locale}/`;
 }
 
-export function pathFor(locale: Locale, section: Section): string {
-  if (section === 'home') return `/${locale}/`;
-  if (section === 'freelance') return `/${locale}/freelance/`;
-  return locale === 'es' ? '/es/candidata/' : '/en/candidate/';
-}
-
-export function swapLocale(pathname: string, next: Locale): string {
-  return pathFor(next, sectionFromPath(pathname));
+export function swapLocale(next: Locale, hash = ''): string {
+  const suffix = hash
+    ? hash.startsWith('#')
+      ? hash
+      : `#${hash}`
+    : '';
+  return `/${next}/${suffix}`;
 }
 
 export function absUrl(path: string): string {
