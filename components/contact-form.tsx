@@ -2,7 +2,7 @@
 
 import { useState, type FormEvent } from 'react';
 import { Button, Input, Label, Stack, Text, Textarea } from '@/components/blurise';
-import { sendContactEmail } from '@/lib/emailjs';
+import { sendContactEmail } from '@/lib/contact';
 
 export type ContactFormCopy = {
   name: string;
@@ -41,6 +41,7 @@ export function ContactForm({ copy, intent, idPrefix }: ContactFormProps) {
 
     if (!name || !email || !message) return;
     if (brief && !goal) return;
+    if (data.get('botcheck')) return;
 
     const parts = [
       goal ? `Goal: ${goal}` : '',
@@ -69,6 +70,9 @@ export function ContactForm({ copy, intent, idPrefix }: ContactFormProps) {
 
   return (
     <form onSubmit={onSubmit} className="w-full">
+      <div className="hidden" aria-hidden="true">
+        <input type="checkbox" name="botcheck" tabIndex={-1} autoComplete="off" />
+      </div>
       <Stack gap={4}>
         <Stack gap={2}>
           <Label htmlFor={`${idPrefix}-name`}>{copy.name}</Label>
