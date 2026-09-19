@@ -1,3 +1,4 @@
+import { BrandMark } from '@/components/brand-mark';
 import { LanguageSwitch } from '@/components/language-switch';
 import { pageMaxWidthClass } from '@/lib/layout';
 import { getMessages } from '@/messages';
@@ -17,9 +18,11 @@ export function SiteHeader({ locale }: SiteHeaderProps) {
       >
         <a
           href={`${pathFor(locale)}#top`}
-          className="text-sm font-medium tracking-wide text-foreground no-underline"
+          aria-label="Margarita Syddall"
+          className="flex items-center gap-2.5 text-foreground no-underline"
         >
-          Margarita Syddall
+          <BrandMark className="size-9 shrink-0 text-accent" />
+          <span className="text-sm font-medium tracking-[0.16em]">Margarita</span>
         </a>
         <nav className="flex flex-wrap items-center justify-end gap-3 sm:gap-5" aria-label="Primary">
           <a

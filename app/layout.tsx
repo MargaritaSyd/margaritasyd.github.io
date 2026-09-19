@@ -10,6 +10,9 @@ export const metadata: Metadata = {
   title: 'Margarita Syddall — Frontend engineer',
   description:
     'Frontend engineer. React, design systems, motion. Open to freelance projects and product roles.',
+  icons: {
+    icon: '/favicon.svg',
+  },
   openGraph: {
     type: 'website',
     siteName: 'Margarita Syddall',
