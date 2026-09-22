@@ -7,8 +7,8 @@ export function BrandMark({ className }: BrandMarkProps) {
 
   return (
     <svg
-      viewBox="0 0 64 64"
-      className={className}
+      viewBox="0 0 80 64"
+      className={className ? `brand-mark ${className}` : 'brand-mark'}
       aria-hidden="true"
       focusable="false"
       fill="none"
@@ -16,20 +16,20 @@ export function BrandMark({ className }: BrandMarkProps) {
       <defs>
         <clipPath id="brand-mark-petals">
           <path
-            d="M0 0h64v64H0zM32 32m-5.4 0a5.4 5.4 0 1 0 10.8 0a5.4 5.4 0 1 0-10.8 0"
+            d="M0 0h80v64H0zM40 32m-5.4 0a5.4 5.4 0 1 0 10.8 0a5.4 5.4 0 1 0-10.8 0"
             clipRule="evenodd"
           />
         </clipPath>
       </defs>
       <path
-        d="M16.5 21.5 8.5 32l8 10.5"
+        d="M12 21.5 3.5 32l8.5 10.5"
         stroke="currentColor"
         strokeWidth="2.4"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       <path
-        d="M47.5 21.5 55.5 32l-8 10.5"
+        d="M68 21.5 76.5 32l-8.5 10.5"
         stroke="currentColor"
         strokeWidth="2.4"
         strokeLinecap="round"
@@ -43,16 +43,16 @@ export function BrandMark({ className }: BrandMarkProps) {
         {petals.map((deg) => (
           <ellipse
             key={deg}
-            cx="32"
+            cx="40"
             cy="21"
             rx="4.5"
             ry="8.4"
-            transform={`rotate(${deg} 32 32)`}
+            transform={`rotate(${deg} 40 32)`}
           />
         ))}
       </g>
       <circle
-        cx="32"
+        cx="40"
         cy="32"
         r="5.4"
         stroke="currentColor"

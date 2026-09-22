@@ -1,20 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 64" fill="none">
   <defs>
     <clipPath id="brand-mark-petals">
-      <path d="M0 0h64v64H0zM32 32m-5.4 0a5.4 5.4 0 1 0 10.8 0a5.4 5.4 0 1 0-10.8 0" clip-rule="evenodd"/>
+      <path d="M0 0h80v64H0zM40 32m-5.4 0a5.4 5.4 0 1 0 10.8 0a5.4 5.4 0 1 0-10.8 0" clip-rule="evenodd"/>
     </clipPath>
   </defs>
-  <path d="M16.5 21.5 8.5 32l8 10.5" stroke="#d4b483" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M47.5 21.5 55.5 32l-8 10.5" stroke="#d4b483" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M12 21.5 3.5 32l8.5 10.5" stroke="#d4b483" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M68 21.5 76.5 32l-8.5 10.5" stroke="#d4b483" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
   <g clip-path="url(#brand-mark-petals)" stroke="#d4b483" stroke-width="1.8">
-    <ellipse cx="32" cy="21" rx="4.5" ry="8.4" transform="rotate(0 32 32)"/>
-    <ellipse cx="32" cy="21" rx="4.5" ry="8.4" transform="rotate(45 32 32)"/>
-    <ellipse cx="32" cy="21" rx="4.5" ry="8.4" transform="rotate(90 32 32)"/>
-    <ellipse cx="32" cy="21" rx="4.5" ry="8.4" transform="rotate(135 32 32)"/>
-    <ellipse cx="32" cy="21" rx="4.5" ry="8.4" transform="rotate(180 32 32)"/>
-    <ellipse cx="32" cy="21" rx="4.5" ry="8.4" transform="rotate(225 32 32)"/>
-    <ellipse cx="32" cy="21" rx="4.5" ry="8.4" transform="rotate(270 32 32)"/>
-    <ellipse cx="32" cy="21" rx="4.5" ry="8.4" transform="rotate(315 32 32)"/>
+    <ellipse cx="40" cy="21" rx="4.5" ry="8.4" transform="rotate(0 40 32)"/>
+    <ellipse cx="40" cy="21" rx="4.5" ry="8.4" transform="rotate(45 40 32)"/>
+    <ellipse cx="40" cy="21" rx="4.5" ry="8.4" transform="rotate(90 40 32)"/>
+    <ellipse cx="40" cy="21" rx="4.5" ry="8.4" transform="rotate(135 40 32)"/>
+    <ellipse cx="40" cy="21" rx="4.5" ry="8.4" transform="rotate(180 40 32)"/>
+    <ellipse cx="40" cy="21" rx="4.5" ry="8.4" transform="rotate(225 40 32)"/>
+    <ellipse cx="40" cy="21" rx="4.5" ry="8.4" transform="rotate(270 40 32)"/>
+    <ellipse cx="40" cy="21" rx="4.5" ry="8.4" transform="rotate(315 40 32)"/>
   </g>
-  <circle cx="32" cy="32" r="5.4" stroke="#d4b483" stroke-width="1.8"/>
+  <circle cx="40" cy="32" r="5.4" stroke="#d4b483" stroke-width="1.8"/>
 </svg>

@@ -21,6 +21,8 @@ export {
   BlurRise,
   Float,
   Grain,
+  HoverGlow,
+  HoverLift,
   ScaleRise,
   Stagger,
 } from 'blurise';

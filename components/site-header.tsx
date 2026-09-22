@@ -1,4 +1,5 @@
 import { BrandMark } from '@/components/brand-mark';
+import { HoverGlow, HoverLift } from '@/components/blurise';
 import { LanguageSwitch } from '@/components/language-switch';
 import { pageMaxWidthClass } from '@/lib/layout';
 import { getMessages } from '@/messages';
@@ -12,16 +13,24 @@ export function SiteHeader({ locale }: SiteHeaderProps) {
   const t = getMessages(locale);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border bg-background/85 backdrop-blur-md">
+    <header className="sticky top-0 z-40 border-b border-border">
       <div
-        className={`mx-auto flex w-full ${pageMaxWidthClass} items-center justify-between gap-4 px-5 py-4`}
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-background/85 backdrop-blur-md"
+      />
+      <div
+        className={`relative mx-auto flex w-full ${pageMaxWidthClass} items-center justify-between gap-4 px-5 py-4`}
       >
         <a
           href={`${pathFor(locale)}#top`}
           aria-label="Margarita Syddall"
           className="flex items-center gap-2.5 text-foreground no-underline"
         >
-          <BrandMark className="size-9 shrink-0 text-accent" />
+          <HoverLift>
+            <HoverGlow>
+              <BrandMark className="h-9 w-11 shrink-0 text-accent" />
+            </HoverGlow>
+          </HoverLift>
           <span className="text-sm font-medium tracking-[0.16em]">Margarita</span>
         </a>
         <nav className="flex flex-wrap items-center justify-end gap-3 sm:gap-5" aria-label="Primary">

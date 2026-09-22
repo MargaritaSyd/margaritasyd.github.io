@@ -41,3 +41,28 @@ body {
   color: var(--br-color-text);
   font-family: var(--br-font-sans);
 }
+
+/* Line art is too thin for blurise's single 18px drop-shadow, so the mark stacks tighter shadows in the same accent. */
+.br-hover-glow:has(.brand-mark) {
+  filter:
+    drop-shadow(0 0 0 transparent)
+    drop-shadow(0 0 0 transparent)
+    drop-shadow(0 0 0 transparent);
+}
+
+@media (hover: hover) {
+  .br-hover-glow:has(.brand-mark):hover {
+    filter:
+      drop-shadow(0 0 1.5px var(--br-color-accent))
+      drop-shadow(0 0 4px var(--br-color-accent))
+      drop-shadow(0 0 11px color-mix(in srgb, var(--br-color-accent) 80%, transparent));
+  }
+}
+
+.br-hover-glow:has(.brand-mark):focus-visible,
+.br-hover-glow:has(.brand-mark):has(:focus-visible) {
+  filter:
+    drop-shadow(0 0 1.5px var(--br-color-accent))
+    drop-shadow(0 0 4px var(--br-color-accent))
+    drop-shadow(0 0 11px color-mix(in srgb, var(--br-color-accent) 80%, transparent));
+}
