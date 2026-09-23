@@ -194,7 +194,7 @@ const en: SiteCopy = {
       },
       {
         name: 'Also',
-        items: ['Node.js', 'SQL', 'React Native', 'Docker'],
+        items: ['Node.js', 'SQL', 'React Native', 'Docker', 'AWS'],
       },
     ],
   },
@@ -274,6 +274,10 @@ const en: SiteCopy = {
       {
         q: 'Are you available?',
         a: 'I take on a small number of projects, and I am open to the right frontend role. Better a clear no than a slow maybe.',
+      },
+      {
+        q: 'Do you invoice?',
+        a: 'Yes. I issue AFIP-authorized electronic invoices in Argentina.',
       },
     ],
   },
@@ -401,7 +405,7 @@ const es: SiteCopy = {
       },
       {
         name: 'También',
-        items: ['Node.js', 'SQL', 'React Native', 'Docker'],
+        items: ['Node.js', 'SQL', 'React Native', 'Docker', 'AWS'],
       },
     ],
   },
@@ -481,6 +485,10 @@ const es: SiteCopy = {
       {
         q: '¿Estás disponible?',
         a: 'Tomo pocos proyectos, y estoy abierta al rol de frontend que encaje. Mejor un no claro que un maybe lento.',
+      },
+      {
+        q: '¿Hacés factura?',
+        a: 'Sí. Factura electrónica homologada por AFIP, en Argentina.',
       },
     ],
   },
