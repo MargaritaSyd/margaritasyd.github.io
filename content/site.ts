@@ -83,8 +83,8 @@ export type SiteCopy = {
     submit: string;
     sending: string;
     success: string;
+    another: string;
     error: string;
-    whatsapp: string;
   };
 };
 
@@ -289,9 +289,9 @@ const en: SiteCopy = {
     message: 'Tell me a bit more',
     submit: 'Send',
     sending: 'Sending',
-    success: 'Sent. I’ll get back to you.',
+    success: 'Got it. I’ll reply to this email.',
+    another: 'Write another',
     error: 'Could not send. Try again or reach me on LinkedIn.',
-    whatsapp: 'WhatsApp',
   },
 };
 
@@ -496,9 +496,9 @@ const es: SiteCopy = {
     message: 'Contame un poco más',
     submit: 'Enviar',
     sending: 'Enviando',
-    success: 'Enviado. Te respondo a la brevedad.',
+    success: 'Recibido. Te respondo a este mail.',
+    another: 'Escribir otro',
     error: 'No se pudo enviar. Probá de nuevo o escribilme por LinkedIn.',
-    whatsapp: 'WhatsApp',
   },
 };
 

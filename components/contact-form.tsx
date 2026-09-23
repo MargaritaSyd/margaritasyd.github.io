@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, type FormEvent } from 'react';
+import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { Button, Input, Label, Stack, Text, Textarea } from '@/components/blurise';
 import { sendContactEmail, type ContactIntent } from '@/lib/contact';
 
@@ -15,6 +15,7 @@ export type ContactFormCopy = {
   submit: string;
   sending: string;
   success: string;
+  another: string;
   error: string;
 };
 
@@ -23,14 +24,47 @@ type ContactFormProps = {
   idPrefix: string;
 };
 
-function parseIntent(value: string): ContactIntent {
-  if (value === 'role' || value === 'project') return value;
-  return 'other';
+function CheckIcon() {
+  return (
+    <svg
+      viewBox="0 0 20 20"
+      className="size-5 shrink-0 text-success"
+      aria-hidden="true"
+      focusable="false"
+      fill="none"
+    >
+      <path
+        d="M4.5 10.5 8 14l7.5-8"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function parseIntent(value: string): ContactIntent | null {
+  if (value === 'role' || value === 'project' || value === 'other') return value;
+  return null;
 }
 
 export function ContactForm({ copy, idPrefix }: ContactFormProps) {
   const [pending, setPending] = useState(false);
   const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const successRef = useRef<HTMLDivElement>(null);
+  const restoreFormFocus = useRef(false);
+
+  useEffect(() => {
+    if (status === 'success') {
+      successRef.current?.focus();
+      return;
+    }
+    if (status === 'idle' && restoreFormFocus.current) {
+      restoreFormFocus.current = false;
+      document.getElementById(`${idPrefix}-name`)?.focus();
+    }
+  }, [status, idPrefix]);
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -55,6 +89,30 @@ export function ContactForm({ copy, idPrefix }: ContactFormProps) {
     } finally {
       setPending(false);
     }
+  }
+
+  if (status === 'success') {
+    return (
+      <Stack gap={4}>
+        <div ref={successRef} tabIndex={-1} role="status" className="outline-none">
+          <Stack direction="row" gap={2} align="center">
+            <CheckIcon />
+            <Text>{copy.success}</Text>
+          </Stack>
+        </div>
+        <Button
+          type="button"
+          variant="ghost"
+          className="w-fit"
+          onClick={() => {
+            restoreFormFocus.current = true;
+            setStatus('idle');
+          }}
+        >
+          {copy.another}
+        </Button>
+      </Stack>
+    );
   }
 
   return (
@@ -95,11 +153,6 @@ export function ContactForm({ copy, idPrefix }: ContactFormProps) {
           <Label htmlFor={`${idPrefix}-message`}>{copy.message}</Label>
           <Textarea id={`${idPrefix}-message`} name="message" rows={6} required />
         </Stack>
-        {status === 'success' ? (
-          <Text size="sm" role="status">
-            {copy.success}
-          </Text>
-        ) : null}
         {status === 'error' ? (
           <Text size="sm" role="alert">
             {copy.error}

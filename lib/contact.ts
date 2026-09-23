@@ -2,24 +2,24 @@ const WEB3FORMS_URL = 'https://api.web3forms.com/submit';
 
 export type ContactIntent = 'role' | 'project' | 'other';
 
-const intentPrefix: Record<ContactIntent, string> = {
-  role: '[Role]',
-  project: '[Project]',
-  other: '[Hello]',
+const intentLabel: Record<ContactIntent, string> = {
+  role: 'A role',
+  project: 'A project',
+  other: 'Something else',
 };
 
 export async function sendContactEmail(input: {
   name: string;
   email: string;
   message: string;
-  intent: ContactIntent;
+  intent: ContactIntent | null;
 }): Promise<void> {
   const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
   if (!accessKey) {
     throw new Error('Missing NEXT_PUBLIC_WEB3FORMS_KEY');
   }
 
-  const prefix = intentPrefix[input.intent];
+  const about = input.intent ? intentLabel[input.intent] : null;
 
   const response = await fetch(WEB3FORMS_URL, {
     method: 'POST',
@@ -29,11 +29,12 @@ export async function sendContactEmail(input: {
     },
     body: JSON.stringify({
       access_key: accessKey,
-      subject: `${prefix} ${input.name}`,
+      subject: about ? `${about} — ${input.name}` : input.name,
       from_name: 'Portfolio',
       name: input.name,
       email: input.email,
-      message: `${prefix}\n${input.message}`,
+      ...(about ? { 'What is this about': about } : {}),
+      message: input.message,
     }),
   });
 

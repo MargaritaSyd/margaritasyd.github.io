@@ -321,14 +321,6 @@ export function HomeView({ locale }: HomeViewProps) {
               {t.contact.title}
             </Heading>
             <Text tone="muted">{t.contact.lede}</Text>
-            <a
-              href={links.whatsapp}
-              className="br-button br-button--ghost br-button--md w-fit"
-              target="_blank"
-              rel="noreferrer"
-            >
-              {t.contact.whatsapp}
-            </a>
             <ContactForm copy={t.contact} idPrefix="contact" />
           </Stack>
         </BlurRise>
